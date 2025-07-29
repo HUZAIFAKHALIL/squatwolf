@@ -18,13 +18,11 @@ const CartDrawer = () => {
 
   return (
     <>
-      {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-transparent bg-opacity-50 z-50 transition-opacity"
         onClick={closeCartDrawer}
       />
       
-      {/* Cart Drawer */}
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 transform transition-transform">
         <div className="flex flex-col h-full">
           {/* Header */}

@@ -16,9 +16,7 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
-    console.log('Adding to cart:', product.title , product);
-    if (product.variants.edges.length > 0) {
+     if (product.variants.edges.length > 0) {
       addToCart(product, product.variants.edges[0].node.id, 1);
     }
   };
@@ -50,7 +48,6 @@ const ProductCard = ({ product }) => {
     >
       <Link href={`/product/${product.handle}`}>
         <div className="aspect-[3/4] w-full overflow-hidden bg-gray-50 relative">
-          {/* Product Badges */}
           {badges.length > 0 && (
             <div className="absolute top-3 left-3 z-10 space-y-1">
               {badges.map((badge, index) => (
@@ -64,7 +61,6 @@ const ProductCard = ({ product }) => {
             </div>
           )}
 
-          {/* Wishlist Heart */}
           <button
             onClick={handleWishlistToggle}
             className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center bg-white/80 hover:bg-white transition-colors rounded-full"

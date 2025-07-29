@@ -1,10 +1,8 @@
-// src\app\collections\[handle]\page.jsx
-import {getProductsInCollectionQuery} from '../../lib/queries/collection';
+import { getProductsInCollectionQuery } from '../../lib/queries/collection';
 import ProductCard from '../../components/ProductCard';
 import { notFound } from 'next/navigation';
 import { shopifyFetch } from '@/app/lib/shopify';
 
-// Generate metadata for SEO
 async function getCollectionData(handle) {
     try {
         const query = getProductsInCollectionQuery(handle);
@@ -16,7 +14,6 @@ async function getCollectionData(handle) {
     }
 }
 
-// Generate metadata for SEO
 export async function generateMetadata({ params }) {
     const { handle } = await params;
     const collection = await getCollectionData(handle);
@@ -52,22 +49,23 @@ export default async function CollectionPage({ params }) {
     return (
         <div className="min-h-screen bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Collection Header */}
-                <div className="text-center mb-12">
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase tracking-wide">
+                {/* Collection Title and Description */}
+
+                <div className="text-start mb-12 mt-12">
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 uppercase tracking-wide flex items-center gap-2 flex-wrap">
                         {collection.title}
+                        <span className="text-sm text-gray-500 normal-case font-normal mt-3">
+                            //{products.length} {products.length === 1 ? 'product' : 'products'}
+                        </span>
                     </h1>
-                    {collection.description && (
+                      {/* {collection.description && (
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            {collection.description}
+                        {collection.description}
                         </p>
-                    )}
-                    <div className="mt-6">
-                        <p className="text-sm text-gray-500">
-                            {products.length} {products.length === 1 ? 'product' : 'products'}
-                        </p>
-                    </div>
+                    )} */}
                 </div>
+
+                <hr className="border-t border-gray-300 my-21" />
 
                 {/* Products Grid */}
                 {products.length > 0 ? (

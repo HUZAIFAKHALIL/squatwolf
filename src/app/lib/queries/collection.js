@@ -3,7 +3,7 @@ export const getProductsInCollectionQuery = (handle) => `
   collectionByHandle(handle: "${handle}") {
     id
     title
-    products(first: 20) {
+    products(first: 100) {
       edges {
         node {
           id
